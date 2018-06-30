@@ -11,19 +11,19 @@ import newHover from './assets/img/new-hover.png'
 const Sidebar = () => {
 
     return (
-        <div className={ css( styles.sidebar ) } >
-            <div className={ css( styles.logo ) }>
-                <img src={quill} alt="Noteherder" className={ css( styles.logoImg ) } />
+        <div className={css(styles.sidebar)} >
+            <div className={css(styles.logo)}>
+                <img src={quill} alt="Noteherder" className={css(styles.logoImg)} />
             </div>
 
-            <a href="/notes" className={ css( styles.newNote ) } >
-                <img src={newHover} alt="New note" className={ css( styles.newNoteImg ) } />
-                <img src={newIcon} alt="New note hover" className={ css( styles.newNoteImg, styles.newNoteImgHover ) } />
+            <a href="/notes" className={css(styles.newNote)} >
+                <img src={newHover} alt="New note" className={css(styles.newNoteImg)} />
+                <img src={newIcon} alt="New note hover" className={css(styles.newNoteImg, styles.newNoteImgHover)} />
             </a>
 
-            <div className="SignOut">
+            <div className={ css(styles.signOut)}>
                 <button>
-                    <i className={`fa fa-sign-out ${ css( styles.buttonIcon )}` }>
+                    <i className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`} title="sign out">
                     </i>
                 </button>
             </div>
@@ -65,6 +65,16 @@ const styles = StyleSheet.create({
         ':hover': {
             opacity: 0,
         },
+    },
+    signOut: {
+        position: 'absolute',
+        bottom: '1rem',
+    },
+    signOutButton: {
+        outline: 'none',
+    },
+    signOutButtonFa: {
+        fontSize: '2rem',
     },
 })
 
