@@ -1,12 +1,29 @@
 import React from 'react'
 
+import './NoteList.css'
+
 const NoteList = () => {
     return (
         <div className="NoteList">
-            <li className="Notes">Note 1</li>
-            <li className="Notes">Note 2</li>
-            <li className="Notes">Note 3</li>
+            <h3>Notes</h3>
+            <ul id="notes">
+                <a className="active">
+                    <li>
+                        <div className="note">
+                            <div className="note-title">
+                                Kohlrabi welsh
+                            </div>
+                            <div class="note-body">
+                                <p>
+                                    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </a>
+            </ul>
         </div>
+
     )
 }
 
