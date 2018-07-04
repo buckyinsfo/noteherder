@@ -10,11 +10,7 @@ class Main extends Component {
     constructor () {
         super()
         this.state = {
-            active: {
-                id: null,
-                title: '',
-                body: '',
-            },
+            active: this.createNote(),
             notes: [
                 {
                     id: 1,
@@ -34,15 +30,28 @@ class Main extends Component {
             ]
         }
     }   
+
+    createNote = () => {
+        return {
+            id: null,
+            title: '',
+            body: '',
+        }
+    }
     
     setActiveNote = (note) => {
         this.setState({active: note})
     }
 
+    newActiveNote = () => {
+        this.setActiveNote(this.createNote())
+       //console.log('Click New!')
+    }
+
     render () {
         return (
             <div className="Main" style={style}>
-                <Sidebar />
+                <Sidebar newNote={this.newActiveNote}/>
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
                 <NoteForm note={this.state.active} />
             </div>

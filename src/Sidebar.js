@@ -8,7 +8,7 @@ import newHover from './assets/img/new-hover.png'
 
 
 
-const Sidebar = () => {
+const Sidebar = ({newNote}) => {
 
     return (
         <div className={css(styles.sidebar)} >
@@ -16,7 +16,14 @@ const Sidebar = () => {
                 <img src={quill} alt="Noteherder" className={css(styles.logoImg)} />
             </div>
 
-            <a href="/notes" className={css(styles.newNote)} >
+            <a 
+                href="/notes" 
+                className={css(styles.newNote)} 
+                onClick={(ev) => {
+                        ev.preventDefault()
+                        newNote()
+                }}
+            >
                 <img src={newHover} alt="New note" className={css(styles.newNoteImg)} />
                 <img src={newIcon} alt="New note hover" className={css(styles.newNoteImg, styles.newNoteImgHover)} />
             </a>
