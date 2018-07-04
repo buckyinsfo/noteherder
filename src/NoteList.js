@@ -1,25 +1,32 @@
 import React from 'react'
 
+import Note from './Note'
 import './NoteList.css'
 
 const NoteList = () => {
+    const notes = [
+        {
+            id: 1,
+            title: 'My first note',
+            body: 'This is my first note',
+        },
+        {
+            id: 2,
+            title: 'My second note',
+            body: 'This is my second note',
+        },
+        {
+            id: 3,
+            title: 'My thirds note',
+            body: 'This is my third note',
+        },
+    ]
     return (
         <div className="NoteList">
             <h3>Notes</h3>
             <ul id="notes">
                 <a className="active">
-                    <li>
-                        <div className="note">
-                            <div className="note-title">
-                                Kohlrabi welsh
-                            </div>
-                            <div class="note-body">
-                                <p>
-                                    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
+                    {notes.map(note => <Note note={note} />)}
                 </a>
             </ul>
         </div>
