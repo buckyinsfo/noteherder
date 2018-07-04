@@ -10,7 +10,11 @@ class Main extends Component {
     constructor () {
         super()
         this.state = {
-            active: null,
+            active: {
+                id: null,
+                title: '',
+                body: '',
+            },
             notes: [
                 {
                     id: 1,
@@ -40,7 +44,7 @@ class Main extends Component {
             <div className="Main" style={style}>
                 <Sidebar />
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
-                <NoteForm />
+                <NoteForm activeNote={this.state.active} />
             </div>
         )
     }
