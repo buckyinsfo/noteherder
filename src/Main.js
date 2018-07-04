@@ -44,7 +44,7 @@ class Main extends Component {
             <div className="Main" style={style}>
                 <Sidebar />
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
-                <NoteForm activeNote={this.state.active} />
+                <NoteForm note={this.state.active} />
             </div>
         )
     }
