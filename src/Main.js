@@ -1,21 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
+
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm';
 
 
 // Stateless functional component.  Don't need to be classes.
-const Main = () => {
-
-    return (
-        <div className="Main" style={style}>
-            <Sidebar />
-            <NoteList />
-            <NoteForm />
-        </div>
-        
-        
-    )
+class Main extends Component {
+    constructor () {
+        super()
+        this.state = {
+            notes: [
+                {
+                    id: 1,
+                    title: 'My first note',
+                    body: 'This is my first note',
+                },
+                {
+                    id: 2,
+                    title: 'My second note',
+                    body: 'This is my second note',
+                },
+                {
+                    id: 3,
+                    title: 'My thirds note',
+                    body: 'This is my third note',
+                },
+            ]
+        }
+    }   
+    
+    render () {
+        return (
+            <div className="Main" style={style}>
+                <Sidebar />
+                <NoteList notes={this.state.notes} />
+                <NoteForm />
+            </div>
+        )
+    }
 }
 
 const style = {

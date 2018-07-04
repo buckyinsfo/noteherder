@@ -2,7 +2,7 @@ import React from 'react'
 
 const Note = (props) => {
     return (
-        <li className="Note">
+        <li className="Note" >
             <div className="note">
                 <div className="note-title">
                     {props.note.title}
