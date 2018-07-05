@@ -10,7 +10,7 @@ class Main extends Component {
     constructor () {
         super()
         this.state = {
-            active: this.createNote(),
+            active: this.createBlankNote(),
             notes: [
                 {
                     id: 1,
@@ -31,7 +31,7 @@ class Main extends Component {
         }
     }   
 
-    createNote = () => {
+    createBlankNote = () => {
         return {
             id: null,
             title: '',
@@ -43,17 +43,31 @@ class Main extends Component {
         this.setState({active: note})
     }
 
-    newActiveNote = () => {
-        this.setActiveNote(this.createNote())
-       //console.log('Click New!')
+    newNote = () => {
+        this.setActiveNote(this.createBlankNote())
+    }
+
+    saveNote = (note) => {
+        const notes = [...this.state.notes]
+        const i = notes.findIndex(iNote => iNote.id === note.id)
+        
+        if ( i === -1 ) {
+            note.id = notes.length + 1
+            notes.push(note)
+        } else {
+            notes[i] = note
+        }
+
+        this.setState({notes})
+        this.setActiveNote(note)    
     }
 
     render () {
         return (
             <div className="Main" style={style}>
-                <Sidebar newNote={this.newActiveNote}/>
+                <Sidebar newNote={this.newNote}/>
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
-                <NoteForm note={this.state.active} />
+                <NoteForm note={this.state.active} saveNote={this.saveNote} />
             </div>
         )
     }
