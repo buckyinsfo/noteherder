@@ -62,12 +62,23 @@ class Main extends Component {
         this.setActiveNote(note)    
     }
 
+    deleteNote = () => {
+        const notes = [...this.state.notes]
+        const i = notes.findIndex(iNote => iNote.id === this.state.active.id)
+        
+        if ( i > -1 ) {
+            notes.splice(i, 1)
+            this.setState({notes})
+            this.newNote()
+        }      
+    }
+
     render () {
         return (
             <div className="Main" style={style}>
                 <Sidebar newNote={this.newNote}/>
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
-                <NoteForm note={this.state.active} saveNote={this.saveNote} />
+                <NoteForm note={this.state.active} saveNote={this.saveNote} deleteNote={this.deleteNote} />
             </div>
         )
     }
