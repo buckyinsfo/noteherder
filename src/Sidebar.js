@@ -8,7 +8,7 @@ import newHover from './assets/img/new-hover.png'
 
 
 
-const Sidebar = ({newNote}) => {
+const Sidebar = ({newNote, signOut}) => {
 
     return (
         <div className={css(styles.sidebar)} >
@@ -29,7 +29,7 @@ const Sidebar = ({newNote}) => {
             </a>
 
             <div className={ css(styles.signOut)}>
-                <button>
+                <button className={ css(styles.button)} onClick={signOut}>
                     <i className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`} title="sign out">
                     </i>
                 </button>

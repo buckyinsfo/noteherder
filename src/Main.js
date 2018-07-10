@@ -71,7 +71,7 @@ class Main extends Component {
     render () {
         return (
             <div className="Main" style={style}>
-                <Sidebar newNote={this.newNote}/>
+                <Sidebar newNote={this.newNote} signOut={this.props.signOut} />
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
                 <NoteForm note={this.state.active} saveNote={this.saveNote} deleteNote={this.deleteNote} />
             </div>
