@@ -8,7 +8,7 @@ import newHover from './assets/img/new-hover.png'
 
 
 
-const Sidebar = ({newNote, signOut}) => {
+const Sidebar = ({newNote, signOut, logUser}) => {
 
     return (
         <div className={css(styles.sidebar)} >
@@ -30,7 +30,13 @@ const Sidebar = ({newNote, signOut}) => {
 
             <div className={ css(styles.signOut)}>
                 <button className={ css(styles.button)} onClick={signOut}>
-                    <i className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`} title="sign out">
+                    <i className={`fas fa-sign-out-alt fa-2x ${css(styles.buttonIcon)}`} title="sign out">
+                    </i>
+                </button>
+            </div>
+            <div className={ css(styles.logUser)}>
+                <button className={ css(styles.button)} onClick={logUser}  >
+                    <i className={`fas fa-check-circle fa-2x ${css(styles.buttonIcon)}`} title="log user">
                     </i>
                 </button>
             </div>
@@ -77,11 +83,18 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: '1rem',
     },
+    logUser: {
+        position: 'absolute',
+        bottom: '5rem',
+    },
     signOutButton: {
         outline: 'none',
     },
     signOutButtonFa: {
         fontSize: '2rem',
+    },
+    buttonIcon: {
+        flexDirection: 'column',
     },
 })
 

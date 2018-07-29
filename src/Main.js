@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import base from './base'
+import base, { auth } from './base'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm';
@@ -23,7 +23,6 @@ class Main extends Component {
             state: 'notes',
             asArray: true,
         })
-
     }
 
     createBlankNote = () => {
@@ -68,10 +67,33 @@ class Main extends Component {
         }      
     }
 
+    logUser = () => {
+        
+        auth.onAuthStateChanged(( user ) => {
+            if (user) {
+                // User is signed in.
+                const data = {
+                    displayName: user.displayName,
+                    email: user.email,
+                    emailVerified: user.emailVerified,
+                    photoURL: user.photoURL,
+                    isAnonymous: user.isAnonymous,
+                    uid: user.uid,
+                    providerData: user.providerData,
+                }
+                console.log( data )
+            } else {
+                // User is signed out.
+                // ...
+                console.log( 'User is signed out!' )
+            }
+        })
+    }
+
     render () {
         return (
             <div className="Main" style={style}>
-                <Sidebar newNote={this.newNote} signOut={this.props.signOut} />
+                <Sidebar newNote={this.newNote} signOut={this.props.signOut} logUser={this.logUser} />
                 <NoteList notes={this.state.notes} setActiveNote={this.setActiveNote} />
                 <NoteForm note={this.state.active} saveNote={this.saveNote} deleteNote={this.deleteNote} />
             </div>
@@ -83,7 +105,7 @@ const style = {
     display: 'flex',
     height: '100vh',
     alignItems: 'stretch',
-    color: '#0000ff',
+    color: '#0000ff',                
 }
 
 const sample = [{
