@@ -14,7 +14,7 @@ const SignIn = ({ handleAuth }) => {
         <div className="SignIn">
             <header className="Header">
                 <img src="media/quill.svg" alt="" />
-                <span className="title">Noteherder</span>
+                <span className="title"></span>
             </header>
             <main>
                 <h3>Hey, Nerd! You Like Notes?</h3>
